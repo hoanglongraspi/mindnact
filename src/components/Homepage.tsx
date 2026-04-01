@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Calendar, 
-  ChevronRight, 
   Star, 
   MapPin, 
   Clock, 
   Users, 
-  Mail, 
-  Phone, 
-  MessageSquare,
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 
 interface Program {
@@ -35,19 +29,19 @@ const Homepage: React.FC = () => {
       {
         title: 'Kids Coding Workshop',
         description: 'Learn programming fundamentals through Scratch and create your first interactive games and animations. Perfect for young coders!',
-        category: 'Programming',
+        category: 'Together Lab',
         color: 'bg-green-100 text-green-800'
       },
       {
         title: 'STEM Robotics Club',
         description: 'Build and program robots using LEGO Mindstorms. Work in teams to solve challenges and compete in robotics competitions.',
-        category: 'STEM',
+        category: 'Together Lab',
         color: 'bg-blue-100 text-blue-800'
       },
       {
         title: 'Python for Kids',
         description: 'Advanced coding class for children ready to learn real programming languages. Create games, animations, and simple applications.',
-        category: 'Programming',
+        category: 'Together Lab',
         color: 'bg-purple-100 text-purple-800'
       }
     ],
@@ -55,19 +49,19 @@ const Homepage: React.FC = () => {
       {
         title: 'Senior Digital Literacy',
         description: 'Patient, one-on-one tech instruction designed for seniors. Learn smartphones, tablets, email, and social media at your own pace.',
-        category: 'Digital Skills',
+        category: 'AgeWell Lab',
         color: 'bg-amber-100 text-amber-800'
       },
       {
         title: 'Senior Computer Skills',
         description: 'Learn essential computer skills including Windows, creating documents, internet browsing, and file management with step-by-step guidance.',
-        category: 'Technology',
+        category: 'AgeWell Lab',
         color: 'bg-teal-100 text-teal-800'
       },
       {
         title: 'Video Calling & Connection',
         description: 'Stay connected with family and friends through video calls. Learn Zoom, Skype, and FaceTime to maintain meaningful relationships.',
-        category: 'Communication',
+        category: 'AgeWell Lab',
         color: 'bg-pink-100 text-pink-800'
       }
     ]
@@ -82,7 +76,7 @@ const Homepage: React.FC = () => {
       location: 'Computer Lab',
       type: 'In-person session',
       audience: 'Child',
-      tags: ['Programming', 'Scratch', '+2 other tags']
+      tags: ['Together Lab']
     },
     {
       id: '2',
@@ -92,7 +86,7 @@ const Homepage: React.FC = () => {
       location: 'Computer Lab',
       type: 'In-person session',
       audience: 'Seniors',
-      tags: ['Digital Skills', 'Technology', '+2 other tags']
+      tags: ['AgeWell Lab']
     },
     {
       id: '4',
@@ -102,7 +96,7 @@ const Homepage: React.FC = () => {
       location: 'STEM Lab',
       type: 'In-person session',
       audience: 'Child',
-      tags: ['STEM', 'Robotics', '+2 other tags']
+      tags: ['Together Lab']
     }
   ];
 
@@ -289,12 +283,12 @@ const Homepage: React.FC = () => {
             {/* Program Categories */}
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {selectedAge === 'Child' 
-                ? ['Coding Workshops', 'Robotics Clubs', 'Python Classes', 'STEM Projects', 'Programming', 'Tech Innovation'].map((category) => (
+                ? ['Together Lab'].map((category) => (
                     <span key={category} className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
                       {category}
                     </span>
                   ))
-                : ['Computer Skills', 'Digital Literacy', 'Video Calling', 'Tech Support', 'Internet Safety', 'Device Help'].map((category) => (
+                : ['AgeWell Lab'].map((category) => (
                     <span key={category} className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium">
                       {category}
                     </span>

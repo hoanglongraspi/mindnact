@@ -32,7 +32,7 @@ const Calendar: React.FC = () => {
   const [selectedAge, setSelectedAge] = useState('All');
   const navigate = useNavigate();
 
-  const categories = ['All', 'Digital Literacy', 'Life Skills', 'Creative Arts', 'Career Support', 'Health & Wellness', 'Community Building'];
+  const categories = ['All', 'Together Lab', 'Community Lab', 'AgeWell Lab'];
   const ageGroups = ['All', 'Child', 'Seniors'];
 
   // Get current date for realistic event dates
@@ -71,7 +71,7 @@ const Calendar: React.FC = () => {
       time: '10:00 AM',
       duration: '1.5 hours',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'Together Lab',
       ageGroup: ['Child'],
       instructor: 'Volunteer Tech Coaches',
       capacity: 12,
@@ -90,7 +90,7 @@ const Calendar: React.FC = () => {
       time: '2:00 PM',
       duration: '1 hour',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'AgeWell Lab',
       ageGroup: ['Seniors'],
       instructor: 'Linda Thompson',
       capacity: 8,
@@ -109,7 +109,7 @@ const Calendar: React.FC = () => {
       time: '4:00 PM',
       duration: '1.5 hours',
       location: 'STEM Lab',
-      category: 'Digital Literacy',
+      category: 'Together Lab',
       ageGroup: ['Child'],
       instructor: 'James Rodriguez',
       capacity: 20,
@@ -127,7 +127,7 @@ const Calendar: React.FC = () => {
       time: '10:00 AM',
       duration: '1.5 hours',
       location: 'Main Hall',
-      category: 'Community Building',
+      category: 'AgeWell Lab',
       ageGroup: ['Seniors'],
       instructor: 'Community Volunteers',
       capacity: 25,
@@ -146,7 +146,7 @@ const Calendar: React.FC = () => {
       time: '3:00 PM',
       duration: '2 hours',
       location: 'Science Lab',
-      category: 'Life Skills',
+      category: 'Together Lab',
       ageGroup: ['Child'],
       instructor: 'Sarah Chen',
       capacity: 15,
@@ -164,7 +164,7 @@ const Calendar: React.FC = () => {
       time: '10:00 AM',
       duration: '1.5 hours',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'AgeWell Lab',
       ageGroup: ['Seniors'],
       instructor: 'Tech Volunteers',
       capacity: 10,
@@ -183,7 +183,7 @@ const Calendar: React.FC = () => {
       time: '2:00 PM',
       duration: '1 hour',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'AgeWell Lab',
       ageGroup: ['Seniors'],
       instructor: 'Linda Thompson',
       capacity: 8,
@@ -202,7 +202,7 @@ const Calendar: React.FC = () => {
       time: '4:00 PM',
       duration: '2 hours',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'Together Lab',
       ageGroup: ['Child'],
       instructor: 'Tech Volunteers',
       capacity: 12,
@@ -221,7 +221,7 @@ const Calendar: React.FC = () => {
       time: '9:00 AM',
       duration: '1 hour',
       location: 'Main Hall',
-      category: 'Health & Wellness',
+      category: 'AgeWell Lab',
       ageGroup: ['Seniors'],
       instructor: 'Fitness Volunteers',
       capacity: 15,
@@ -240,7 +240,7 @@ const Calendar: React.FC = () => {
       time: '3:00 PM',
       duration: '2 hours',
       location: 'Computer Lab',
-      category: 'Digital Literacy',
+      category: 'Together Lab',
       ageGroup: ['Child'],
       instructor: 'Web Volunteers',
       capacity: 15,
@@ -263,8 +263,6 @@ const Calendar: React.FC = () => {
     const year = date.getFullYear();
     const month = date.getMonth();
     const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const daysInMonth = lastDay.getDate();
     const startDate = new Date(firstDay);
     startDate.setDate(startDate.getDate() - firstDay.getDay());
     
@@ -302,10 +300,6 @@ const Calendar: React.FC = () => {
 
   const prevMonth = () => {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1));
-  };
-
-  const handleEventClick = (event: Event) => {
-    navigate(`/event/${event.id}`);
   };
 
   const renderEventCard = (event: Event) => (
