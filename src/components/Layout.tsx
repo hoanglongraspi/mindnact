@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ChevronDown, Code2, GraduationCap } from 'lucide-react';
+
+
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -26,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
                 <div className="w-6 h-6 text-white">
                   <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"/>
+                    <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" />
                   </svg>
                 </div>
               </div>
@@ -37,15 +39,69 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`transition-colors ${
-                    location.pathname === item.href
-                      ? 'text-purple-600 font-medium'
-                      : 'text-gray-700 hover:text-purple-600'
-                  }`}
+                  className={`transition-colors py-2 ${location.pathname === item.href
+                    ? 'text-purple-600 font-medium'
+                    : 'text-gray-700 hover:text-purple-600'
+                    }`}
                 >
                   {item.name}
                 </Link>
               ))}
+
+              {/* Featured Program Dropdown */}
+              <div className="relative group">
+                <button
+                  className="flex items-center space-x-1 text-gray-700 hover:text-purple-600 transition-colors py-2"
+                >
+                  <span>Featured Program</span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                </button>
+
+                {/* Dropdown Menu */}
+                <div className="absolute right-0 w-80 mt-0 origin-top-right bg-white border border-gray-100 rounded-2xl shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition-all duration-300 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50 overflow-hidden">
+                  <div className="p-2 space-y-1">
+                    <a
+                      href="https://turing.mindnact.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/item flex items-start p-4 rounded-xl transition-all duration-200 hover:bg-purple-50"
+                    >
+                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-4 group-hover/item:bg-purple-600 transition-colors shrink-0">
+                        <Code2 className="w-5 h-5 text-purple-600 group-hover/item:text-white transition-colors" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm font-semibold text-gray-900 group-hover/item:text-purple-600 transition-colors">
+                          WNY Turing Challenge
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1 leading-relaxed">
+                          Youth competition in coding and creative problem solving.
+                        </div>
+                      </div>
+                    </a>
+
+                    <a
+                      href="https://bira.mindnact.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/item flex items-start p-4 rounded-xl transition-all duration-200 hover:bg-blue-50"
+                    >
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 group-hover/item:bg-blue-600 transition-colors shrink-0">
+                        <GraduationCap className="w-5 h-5 text-blue-600 group-hover/item:text-white transition-colors" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm font-semibold text-gray-900 group-hover/item:text-blue-600 transition-colors">
+                          Buffalo Innovation Research Academy
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1 leading-relaxed">
+                          Pre-college research and innovation excellence.
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
             </nav>
           </div>
         </div>
@@ -86,6 +142,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="space-y-4">
               <h4 className="font-semibold text-gray-900">Programs</h4>
               <div className="space-y-2">
+                <a href="https://turing.mindnact.org/" target="_blank" rel="noopener noreferrer" className="block text-purple-600 font-medium hover:text-purple-700 transition-colors">WNY Turing Challenge</a>
+                <a href="https://bira.mindnact.org/" target="_blank" rel="noopener noreferrer" className="block text-purple-600 font-medium hover:text-purple-700 transition-colors mb-4">Buffalo Innovation Research Academy</a>
                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors">Kids Coding Workshop</a>
                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors">STEM Robotics Club</a>
                 <a href="#" className="block text-gray-600 hover:text-gray-900 transition-colors">Python for Kids</a>
