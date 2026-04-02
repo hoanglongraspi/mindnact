@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles, ChevronDown, Code2, GraduationCap } from 'lucide-react';
+import { Sparkles, ChevronDown, Code2, GraduationCap, Menu, X } from 'lucide-react';
 
 
 
@@ -10,6 +10,8 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [featuredOpen, setFeaturedOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -18,13 +20,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'News', href: '/news' },
   ];
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setFeaturedOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-gray-50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
               <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
                 <div className="w-6 h-6 text-white">
                   <svg viewBox="0 0 24 24" fill="currentColor">
@@ -34,6 +41,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
               <span className="text-xl font-bold text-gray-900">Minds and Actions</span>
             </Link>
+
+            {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <Link
@@ -103,8 +112,83 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
 
             </nav>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-gray-50 border-t border-gray-200">
+            <div className="px-4 py-3 space-y-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={closeMobileMenu}
+                  className={`block px-3 py-2 rounded-lg text-base transition-colors ${location.pathname === item.href
+                    ? 'text-purple-600 font-medium bg-purple-50'
+                    : 'text-gray-700 hover:text-purple-600 hover:bg-gray-100'
+                    }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+
+              {/* Featured Program accordion */}
+              <div>
+                <button
+                  onClick={() => setFeaturedOpen(!featuredOpen)}
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base text-gray-700 hover:bg-gray-100 transition-colors"
+                >
+                  <span>Featured Program</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${featuredOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {featuredOpen && (
+                  <div className="mt-1 ml-3 space-y-1">
+                    <a
+                      href="https://turing.mindnact.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobileMenu}
+                      className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center shrink-0">
+                        <Code2 className="w-4 h-4 text-purple-600" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">WNY Turing Challenge</div>
+                        <div className="text-xs text-gray-500">Youth coding competition</div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://bira.mindnact.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobileMenu}
+                      className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+                    >
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
+                        <GraduationCap className="w-4 h-4 text-blue-600" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Buffalo Innovation Research Academy</div>
+                        <div className="text-xs text-gray-500">Pre-college research program</div>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
@@ -115,8 +199,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Footer */}
       <footer className="bg-white py-16 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="col-span-2 md:col-span-1 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center transform rotate-12">
                   <Sparkles className="w-5 h-5 text-white" />

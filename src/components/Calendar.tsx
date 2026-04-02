@@ -383,9 +383,10 @@ const Calendar: React.FC = () => {
 
         {/* Days of Week Header */}
         <div className="grid grid-cols-7 border-b border-gray-200">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="p-3 text-center font-semibold text-gray-700 bg-gray-50">
-              {day}
+          {[['Sun','S'], ['Mon','M'], ['Tue','T'], ['Wed','W'], ['Thu','T'], ['Fri','F'], ['Sat','S']].map(([full, short]) => (
+            <div key={full} className="p-1 md:p-3 text-center font-semibold text-gray-700 bg-gray-50 text-xs md:text-sm">
+              <span className="hidden sm:inline">{full}</span>
+              <span className="sm:hidden">{short}</span>
             </div>
           ))}
         </div>
@@ -400,29 +401,30 @@ const Calendar: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`min-h-[120px] p-2 border-r border-b border-gray-100 ${
+                className={`min-h-[60px] md:min-h-[120px] p-1 md:p-2 border-r border-b border-gray-100 ${
                   !isCurrentMonth ? 'bg-gray-50 text-gray-400' : 'bg-white'
                 } ${isToday ? 'bg-blue-50 border-blue-200' : ''}`}
               >
-                <div className={`text-sm font-medium mb-2 ${
+                <div className={`text-xs md:text-sm font-medium mb-1 md:mb-2 ${
                   isToday ? 'text-blue-600' : isCurrentMonth ? 'text-gray-900' : 'text-gray-400'
                 }`}>
                   {date.getDate()}
                   {isToday && (
-                    <span className="ml-1 bg-blue-600 text-white text-xs px-1 py-0.5 rounded">Today</span>
+                    <span className="hidden sm:inline ml-1 bg-blue-600 text-white text-xs px-1 py-0.5 rounded">Today</span>
                   )}
                 </div>
-                
-                <div className="space-y-1">
-                  {dayEvents.slice(0, 3).map(event => (
-                    <div 
-                      key={event.id} 
-                      className={`text-xs p-1.5 rounded border-l-2 ${event.color} hover:shadow-sm cursor-pointer transition-shadow`}
+
+                <div className="space-y-0.5 md:space-y-1">
+                  {dayEvents.slice(0, 2).map(event => (
+                    <div
+                      key={event.id}
+                      className={`text-xs p-0.5 md:p-1.5 rounded border-l-2 ${event.color} hover:shadow-sm cursor-pointer transition-shadow`}
                       title={`${event.title} - ${event.time} at ${event.location}`}
                       onClick={() => navigate(`/event/${event.id}`)}
                     >
-                      <div className="font-medium truncate">{event.title}</div>
-                      <div className="opacity-75 flex items-center justify-between">
+                      <div className="font-medium truncate hidden md:block">{event.title}</div>
+                      <div className="font-medium truncate md:hidden text-[10px] leading-tight">{event.title.split(' ')[0]}</div>
+                      <div className="opacity-75 hidden md:flex items-center justify-between">
                         <div className="flex items-center space-x-1">
                           <span>{event.time}</span>
                           {event.isVolunteerLed && <HandHeart className="w-2 h-2" />}
@@ -434,9 +436,9 @@ const Calendar: React.FC = () => {
                       </div>
                     </div>
                   ))}
-                  {dayEvents.length > 3 && (
-                    <div className="text-xs text-gray-500 bg-gray-100 px-1 py-0.5 rounded text-center">
-                      +{dayEvents.length - 3} more
+                  {dayEvents.length > 2 && (
+                    <div className="text-[10px] md:text-xs text-gray-500 bg-gray-100 px-1 py-0.5 rounded text-center">
+                      +{dayEvents.length - 2}
                     </div>
                   )}
                 </div>
@@ -479,22 +481,22 @@ const Calendar: React.FC = () => {
 
         {/* Filters and Controls */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            <div className="flex gap-4 items-center">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
               </select>
-              
+
               <select
                 value={selectedAge}
                 onChange={(e) => setSelectedAge(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               >
                 {ageGroups.map(age => (
                   <option key={age} value={age}>{age}</option>
@@ -505,9 +507,9 @@ const Calendar: React.FC = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setSelectedView('month')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedView === 'month' 
-                    ? 'bg-blue-600 text-white' 
+                className={`flex-1 sm:flex-none px-4 py-2 rounded-lg font-medium transition-colors ${
+                  selectedView === 'month'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -515,9 +517,9 @@ const Calendar: React.FC = () => {
               </button>
               <button
                 onClick={() => setSelectedView('week')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedView === 'week' 
-                    ? 'bg-blue-600 text-white' 
+                className={`flex-1 sm:flex-none px-4 py-2 rounded-lg font-medium transition-colors ${
+                  selectedView === 'week'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -574,9 +576,9 @@ const Calendar: React.FC = () => {
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer"
                 onClick={() => navigate(`/event/${event.id}`)}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
                       <h3 className="text-xl font-bold text-gray-900">{event.title}</h3>
                       <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getAgeGroupColor(event.ageGroup)}`}>
                         {getAgeGroupText(event.ageGroup)}
@@ -585,14 +587,14 @@ const Calendar: React.FC = () => {
                     <p className="text-gray-600 mb-3">{event.description}</p>
                   </div>
                   {event.isVolunteerLed && (
-                    <div className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                    <div className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1 self-start shrink-0">
                       <HandHeart className="w-4 h-4" />
                       <span>Volunteer-led</span>
                     </div>
                   )}
                 </div>
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                   <div className="flex items-center space-x-2">
                     <CalendarIcon className="w-4 h-4 text-gray-500" />
                     <span className="text-sm">{formatDate(new Date(event.date))}</span>

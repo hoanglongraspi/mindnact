@@ -372,7 +372,7 @@ const ActivityCenter: React.FC = () => {
             </p>
           </div>
           
-          <div className="flex items-center justify-between p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
             <div>
               <h4 className="font-bold text-gray-900">Ready to join our community?</h4>
               <p className="text-gray-600">
@@ -381,7 +381,7 @@ const ActivityCenter: React.FC = () => {
                  'This program is currently at capacity'}
               </p>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button className="px-6 py-3 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium">
                 Contact Us
               </button>
@@ -390,7 +390,7 @@ const ActivityCenter: React.FC = () => {
                 program.status === 'Waitlist' ? 'bg-yellow-600 text-white hover:bg-yellow-700' :
                 'bg-gray-400 text-white cursor-not-allowed'
               }`}>
-                {program.status === 'Open' ? 'Sign Up Now' : 
+                {program.status === 'Open' ? 'Sign Up Now' :
                  program.status === 'Waitlist' ? 'Join Waitlist' : 'Program Full'}
               </button>
             </div>
@@ -458,21 +458,21 @@ const ActivityCenter: React.FC = () => {
               </div>
             </div>
             
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full sm:w-auto px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               >
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
               </select>
-              
+
               <select
                 value={selectedAge}
                 onChange={(e) => setSelectedAge(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full sm:w-auto px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               >
                 {ageGroups.map(age => (
                   <option key={age} value={age}>{age}</option>

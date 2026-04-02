@@ -168,18 +168,18 @@ const Homepage: React.FC = () => {
                 />
                 
                 {/* Enhanced Welcome Box with Friendly Shapes */}
-                <div className="absolute -bottom-12 -right-12 z-20">
+                <div className="hidden sm:block absolute -bottom-12 -right-12 z-20">
                   {/* Decorative shapes around the box */}
                   <div className="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full shadow-lg"></div>
                   <div className="absolute -top-2 right-4 w-6 h-6 bg-pink-400 rounded-full shadow-lg"></div>
                   <div className="absolute -bottom-2 -left-6 w-4 h-4 bg-blue-400 rounded-full shadow-lg"></div>
                   <div className="absolute top-2 -right-2 w-5 h-5 bg-green-400 rounded-full shadow-lg"></div>
-                  
+
                   {/* Main welcome box */}
                   <div className="relative bg-white rounded-3xl p-6 shadow-2xl max-w-sm border-4 border-orange-200 transform rotate-1">
                     {/* Speech bubble pointer */}
                     <div className="absolute -left-3 top-8 w-6 h-6 bg-white border-l-4 border-b-4 border-orange-200 transform rotate-45"></div>
-                    
+
                     {/* Content */}
                     <div className="space-y-4">
                       <div className="flex items-center space-x-2 mb-3">
@@ -187,16 +187,16 @@ const Homepage: React.FC = () => {
                         <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                       </div>
-                      
+
                       <p className="text-lg font-bold text-gray-900 leading-tight">
-                        Welcome to Minds and Actions, where children learn STEM and seniors master technology! 
+                        Welcome to Minds and Actions, where children learn STEM and seniors master technology!
                         <span className="text-2xl ml-2">🚀</span>
                       </p>
-                      
+
                       <p className="text-sm text-gray-700 leading-relaxed">
                         Discover coding workshops, robotics clubs, digital literacy programs, and tech support-bridging generations through learning and innovation.
                       </p>
-                      
+
                       {/* Fun decorative elements inside box */}
                       <div className="flex justify-between items-center pt-2">
                         <div className="flex space-x-2">
@@ -207,10 +207,26 @@ const Homepage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Additional floating shapes for friendliness */}
                   <div className="absolute -top-8 left-12 w-3 h-3 bg-purple-400 transform rotate-45"></div>
                   <div className="absolute bottom-4 -right-8 w-6 h-6 bg-orange-300 transform rotate-12"></div>
+                </div>
+
+                {/* Mobile welcome box - inline, not overlapping */}
+                <div className="sm:hidden mt-4 bg-white rounded-2xl p-4 shadow-lg border-2 border-orange-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <p className="text-base font-bold text-gray-900 leading-tight mb-2">
+                    Welcome to Minds and Actions! 🚀
+                  </p>
+                  <div className="flex space-x-2">
+                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full">🧒 Kids</span>
+                    <span className="text-sm bg-amber-100 text-amber-800 px-2 py-1 rounded-full">👴 Seniors</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -335,35 +351,35 @@ const Homepage: React.FC = () => {
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105"
                 onClick={() => navigate(`/event/${event.id}`)}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-6">
-                    <div className="text-center">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="flex items-center space-x-4 sm:space-x-6">
+                    <div className="text-center shrink-0">
                       <div className="text-sm font-medium text-gray-600 uppercase">{event.date.month}</div>
                       <div className="text-2xl font-bold text-gray-900">{event.date.day}</div>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">{event.title}</h3>
-                      <div className="flex items-center space-x-4 text-sm text-gray-600">
+
+                    <div className="space-y-2 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">{event.title}</h3>
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-gray-600">
                         <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
+                          <Clock className="w-4 h-4 shrink-0" />
                           <span>{event.time}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Users className="w-4 h-4" />
+                          <Users className="w-4 h-4 shrink-0" />
                           <span>{event.type}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-4 h-4 shrink-0" />
                           <span>{event.location}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="text-right space-y-2">
-                    <div className="text-sm font-medium text-gray-900">{event.audience}</div>
-                    <div className="flex flex-wrap gap-1 justify-end">
+
+                  <div className="flex sm:flex-col sm:text-right items-center sm:items-end justify-between sm:justify-start gap-2 sm:gap-1 sm:shrink-0">
+                    <div className="flex flex-wrap gap-1 sm:justify-end">
+                      <span className="text-sm font-medium text-gray-900">{event.audience}</span>
                       {event.tags.map((tag, tagIndex) => (
                         <span key={tagIndex} className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">
                           {tag}
@@ -371,7 +387,7 @@ const Homepage: React.FC = () => {
                       ))}
                     </div>
                     {/* Click indicator */}
-                    <div className="flex items-center justify-end space-x-1 text-blue-600 text-xs">
+                    <div className="flex items-center space-x-1 text-blue-600 text-xs shrink-0">
                       <span>View Details</span>
                       <ArrowRight className="w-3 h-3" />
                     </div>
