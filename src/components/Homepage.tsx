@@ -239,6 +239,24 @@ const Homepage: React.FC = () => {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="pt-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-[2.5rem] p-8 md:p-12 text-center relative overflow-hidden shadow-sm border border-blue-100">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-200 rounded-bl-full opacity-30"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-indigo-200 rounded-tr-full opacity-30"></div>
+            
+            <div className="relative z-10 space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Who We Are</h2>
+              <p className="max-w-4xl mx-auto text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
+                <span className="text-blue-700 font-bold">Minds and Actions Inc.</span> is a 501(c)(3) nonprofit organization founded by a group of youth and seniors dedicated to promoting STEM education and digital/AI literacy for underserved youth and older adults. We recognize how essential STEM knowledge and digital/AI skills are in today’s society, and we are committed to expanding access to these learning opportunities for those who need them most.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* What We Offer Section */}
       <section className="pt-16 pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
