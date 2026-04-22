@@ -14,21 +14,51 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
   {
+    id: '8',
+    title: 'Food Exploration Experience with YSA',
+    excerpt: 'TogetherLab participants came together for a shared food exploration experience supported by YSA to foster social connection, cultural learning, and team communication skills.',
+    content: 'On April 19, 2026, TogetherLab participants came together for a unique and engaging food exploration experience, generously supported by YSA (Youth Service America). This special event was designed to go far beyond just tasting new foods — it was a hands-on opportunity to foster meaningful social connections, celebrate cultural diversity, and strengthen team communication skills.\n\nParticipants worked together to explore and prepare dishes from various cultural backgrounds, learning about the histories and traditions behind each recipe. The collaborative cooking environment naturally encouraged conversation, cooperation, and a deeper appreciation for the diverse backgrounds within our community. Events like these are a cornerstone of TogetherLab\'s mission to build bridges between young people through shared, enriching experiences.',
+    date: '2026-04-19',
+    author: 'Together Lab Team',
+    category: 'Together Lab',
+    featured: true,
+    image: '/events/together_04192026.jpg'
+  },
+  {
+    id: '7',
+    title: '3D Printing Lab Visit at UB',
+    excerpt: 'TogetherLab participants visited the university\'s 3D printing lab to explore advanced manufacturing technologies and build STEM learning and innovation skills.',
+    content: 'On April 18, 2026, TogetherLab participants had an incredible opportunity to visit the University at Buffalo\'s state-of-the-art 3D printing lab. The visit was designed to immerse our youth members in the world of advanced manufacturing technologies and spark their curiosity about STEM career pathways.\n\nDuring the visit, participants observed 3D printers in action, learned about the design-to-prototype pipeline, and had hands-on experiences with digital modeling tools. The lab staff walked them through real-world applications of 3D printing in healthcare, engineering, and product design. This kind of experiential learning is exactly what TogetherLab strives to provide — bridging the gap between classroom concepts and cutting-edge innovation.',
+    date: '2026-04-18',
+    author: 'Together Lab Team',
+    category: 'Together Lab',
+    image: '/events/together_04182026.jpg'
+  },
+  {
+    id: '6',
+    title: 'AgeWell Experiential Travel Retreat',
+    excerpt: 'AgeWell participants joined an experiential travel retreat in Los Angeles and Hawaii to strengthen life skills, social connection, teamwork, and intergenerational learning.',
+    content: 'From April 5, 2026, AgeWell Lab participants embarked on an extraordinary experiential travel retreat spanning Los Angeles and Hawaii. This immersive program was thoughtfully designed to strengthen essential life skills, deepen social connections, and promote intergenerational learning in inspiring new environments.\n\nParticipants engaged in a variety of team-building exercises, cultural excursions, and reflective workshops throughout their journey. From exploring the vibrant communities of Los Angeles to experiencing the natural beauty and cultural heritage of Hawaii, every activity was crafted to encourage teamwork, resilience, and personal growth. The retreat exemplified AgeWell Lab\'s commitment to creating transformative experiences that empower participants of all ages to learn, connect, and thrive together.',
+    date: '2026-04-05',
+    author: 'AgeWell Lab Team',
+    category: 'AgeWell Lab',
+    image: '/events/agewell_04052026.jpg'
+  },
+  {
     id: '1',
     title: 'Volunteering at Buffalo Heritage Village',
-    excerpt: 'Austin Xu volunteered at Buffalo Heritage Village from 11:00 AM to 3:00 PM, helping make pancakes for the Maple Festival.',
-    content: 'On Saturday, March 28, 2026, Together Lab\'s very own Austin Xu dedicated his weekend to volunteering at the Buffalo Heritage Village. From 11:00 AM to 3:00 PM, Austin rolled up his sleeves to help prepare and serve delicious pancakes for the highly anticipated annual Maple Festival.\n\nCommunity events like these are at the heart of what makes our programs special. By bridging generations and getting involved in local traditions, our youth members learn the value of service, teamwork, and active community participation. We extend our deepest gratitude to Austin for representing Minds & Actions so wonderfully and ensuring the Maple Festival was a sweet success for all who attended!',
+    excerpt: 'TogetherLab members volunteered at Buffalo Heritage Village from 11:00 AM to 3:00 PM, helping make pancakes for the Maple Festival.',
+    content: 'On Saturday, March 28, 2026, TogetherLab members volunteered at the Buffalo Heritage Village. From 11:00 AM to 3:00 PM, they rolled up their sleeves to help prepare and serve delicious pancakes for the highly anticipated annual Maple Festival.\n\nCommunity events like these are at the heart of what makes our programs special. By bridging generations and getting involved in local traditions, our youth members learn the value of service, teamwork, and active community participation. We extend our deepest gratitude to our volunteer for representing Minds & Actions so wonderfully and ensuring the Maple Festival was a sweet success for all who attended!',
     date: '2026-03-28',
     author: 'Together Lab',
     category: 'Together Lab',
-    featured: true,
     image: '/events/together_03282026.jpg'
   },
   {
     id: '2',
     title: 'UB Research Lab Visit',
-    excerpt: 'TogetherLab members Austin, Nickolas and Issac visited the UB research lab to study advanced healthcare technologies.',
-    content: 'In an exciting educational excursion on March 26, Together Lab members Austin, Nickolas, and Issac visited the University at Buffalo (UB) research laboratories. The trip was organized to give our youth a firsthand look at how advanced healthcare technologies are being developed and tested.\n\nDuring the visit, the team was introduced to cutting-edge medical devices and innovative software designed to improve patient care and accessibility. The hands-on experience not only broadened their understanding of STEM career pathways but also sparked engaging discussions about the future of inclusive technology design. This collaboration with UB highlights our commitment to providing experiential learning opportunities that inspire the next generation of researchers and innovators.',
+    excerpt: 'TogetherLab members visited the UB research lab to study advanced healthcare technologies.',
+    content: 'In an exciting educational excursion on March 26, TogetherLab members visited the University at Buffalo (UB) research laboratories. The trip was organized to give our youth a firsthand look at how advanced healthcare technologies are being developed and tested.\n\nDuring the visit, the team was introduced to cutting-edge medical devices and innovative software designed to improve patient care and accessibility. The hands-on experience not only broadened their understanding of STEM career pathways but also sparked engaging discussions about the future of inclusive technology design. This collaboration with UB highlights our commitment to providing experiential learning opportunities that inspire the next generation of researchers and innovators.',
     date: '2026-03-26',
     author: 'Together Lab Team',
     category: 'Together Lab',
