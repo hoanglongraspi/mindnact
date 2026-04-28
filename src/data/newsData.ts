@@ -10,9 +10,62 @@ export interface NewsItem {
   category: NewsCategory;
   featured?: boolean;
   image?: string;
+  imagePosition?: string;
 }
 
 export const newsItems: NewsItem[] = [
+  {
+    id: '13',
+    title: 'Exploring Digital Music Technology',
+    excerpt: 'The AgeWell team hosted a local community event to help older adult participants explore digital music technology, fostering both technical learning and strengthened communication skills.',
+    content: 'On April 27, 2026, the AgeWell team hosted an engaging local community event focused on helping older adults explore the exciting world of digital music technology. Participants had the opportunity to interact with modern software and devices to create, mix, and enjoy music in new ways.\n\nBeyond just learning new technical skills, the event provided a wonderful platform for attendees to strengthen their communication skills and build meaningful social connections. By sharing their musical creations and collaborating on projects, participants fostered a vibrant sense of community and demonstrated the powerful role that creative technology can play in enhancing well-being and lifelong learning.',
+    date: '2026-04-27',
+    author: 'AgeWell Lab Team',
+    category: 'AgeWell Lab',
+    featured: true,
+    image: '/events/agewell_04282026.jpg'
+  },
+  {
+    id: '12',
+    title: 'Community Science Exploration',
+    excerpt: 'TogetherLab members led a hands-on community science exploration in the Williamsville North High neighborhood to assess and advocate for suburban infrastructure accessibility.',
+    content: 'On April 25, 2026, TogetherLab members proudly held their very first community science exploration, focusing on suburban infrastructure accessibility. The initiative took place in the Williamsville North High neighborhood, where our youth participants actively assessed and documented the accessibility of local public spaces, sidewalks, and crosswalks.\n\nEquipped with observation tools and a passion for inclusive design, the members gathered valuable data on how suburban environments support or hinder mobility for diverse populations. This hands-on project not only empowered the students to engage directly with real-world civic issues but also highlighted TogetherLab\'s commitment to advocating for safer, more accessible communities for everyone.',
+    date: '2026-04-25',
+    author: 'Together Lab Team',
+    category: 'Together Lab',
+    image: '/events/together_04262026.jpg'
+  },
+  {
+    id: '11',
+    title: 'Introducing OneScan Biometrical Technologies',
+    excerpt: 'TogetherLab members showcased OneScan, an advanced biometrical technology utilizing gait sensors for fall risk diagnostics, at a local Western New York community event.',
+    content: 'At a recent Western New York community event on April 25, 2026, TogetherLab members had the exciting opportunity to showcase advanced biometrical technologies to the public. The highlight of their presentation was OneScan, an innovative system utilizing balancing and gait sensors designed specifically for fall risk diagnostics.\n\nThe youth members demonstrated how these cutting-edge products can proactively monitor health and improve safety for vulnerable populations. Engaging with community members, they explained the underlying science and the potential impact of such technologies on preventative healthcare. This event successfully combined STEM education with community outreach, allowing our participants to act as ambassadors for health-focused innovation.',
+    date: '2026-04-25',
+    author: 'Together Lab Team',
+    category: 'Together Lab',
+    image: '/events/together_04252026.jpg',
+    imagePosition: '50% 20%'
+  },
+  {
+    id: '10',
+    title: 'Choir Performance at WNY Community Event',
+    excerpt: 'The AgeWell Lab choir delivered an inspiring and heartwarming musical performance at a local Western New York community event, celebrating the arts and social connection.',
+    content: 'On April 25, 2026, the AgeWell Lab choir delivered a heartwarming and uplifting performance at a prominent Western New York community event. The choir, composed of enthusiastic AgeWell participants, spent weeks rehearsing a diverse repertoire of songs designed to bring joy and inspiration to the audience.\n\nThe performance was a resounding success, highlighting the incredible talent and vibrant spirit of our older adult members. More than just a musical showcase, the event served as a powerful testament to the importance of the arts in fostering social inclusion, boosting mental health, and bridging generational divides within the community.',
+    date: '2026-04-25',
+    author: 'AgeWell Lab Team',
+    category: 'AgeWell Lab',
+    image: '/events/agewell_04252026.jpg'
+  },
+  {
+    id: '9',
+    title: 'Digital Literacy and Communication Skills',
+    excerpt: 'AgeWell team members participated in an empowering workshop to enhance their digital literacy, safely navigate new technologies, and strengthen communication skills.',
+    content: 'In an empowering workshop held on April 21, 2026, AgeWell team members came together to enhance their digital literacy and strengthen vital communication skills. As technology continues to evolve rapidly, staying connected and informed has become increasingly important for older adults.\n\nDuring the session, participants learned how to navigate new digital platforms, safely use online communication tools, and protect their digital privacy. The collaborative environment encouraged peer-to-peer support, allowing members to share tips and build confidence together. This initiative reflects AgeWell Lab\'s ongoing dedication to bridging the digital divide and ensuring that all community members can actively participate in today\'s connected world.',
+    date: '2026-04-21',
+    author: 'AgeWell Lab Team',
+    category: 'AgeWell Lab',
+    image: '/events/agewell_04212026.jpg'
+  },
   {
     id: '8',
     title: 'Food Exploration Experience with YSA',
@@ -21,7 +74,6 @@ export const newsItems: NewsItem[] = [
     date: '2026-04-19',
     author: 'Together Lab Team',
     category: 'Together Lab',
-    featured: true,
     image: '/events/together_04192026.jpg'
   },
   {
@@ -108,6 +160,7 @@ export const getCategoryColor = (cat: string) => {
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', {
+    timeZone: 'UTC',
     year: 'numeric',
     month: 'long',
     day: 'numeric'

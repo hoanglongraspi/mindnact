@@ -9,13 +9,14 @@ const News: React.FC = () => {
   const categoryNews = newsItems.filter(item => selectedCategory === 'All' || item.category === selectedCategory);
 
   const NewsCard: React.FC<{ news: NewsItem; featured?: boolean }> = ({ news, featured = false }) => (
-    <article className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full`}>
+    <article className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full relative group`}>
       {news.image && (
         <div className={`overflow-hidden ${featured ? 'h-64' : 'h-48'} shrink-0`}>
           <img 
             src={news.image} 
             alt={news.title}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            style={{ objectPosition: news.imagePosition || 'center' }}
           />
         </div>
       )}
@@ -54,7 +55,7 @@ const News: React.FC = () => {
           </div>
           <Link 
             to={`/news/${news.id}`} 
-            className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
+            className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors before:absolute before:inset-0"
           >
             <span>Read More</span>
             <ArrowRight className="w-4 h-4" />

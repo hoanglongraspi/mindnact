@@ -35,6 +35,7 @@ const NewsDetail: React.FC = () => {
                 src={article.image} 
                 alt={article.title}
                 className="w-full h-full object-cover"
+                style={{ objectPosition: article.imagePosition || 'center' }}
               />
             </div>
           )}
